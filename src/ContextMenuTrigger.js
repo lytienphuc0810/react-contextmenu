@@ -88,8 +88,10 @@ export default class ContextMenuTrigger extends Component {
     }
 
     handleContextMenu = (event) => {
-        this.handleContextClick(event);
-        callIfExists(this.props.attributes.onContextMenu, event);
+        if (!event.ctrlKey) {
+            this.handleContextClick(event);
+            callIfExists(this.props.attributes.onContextMenu, event);
+        }
     }
 
     handleContextClick = (event) => {
